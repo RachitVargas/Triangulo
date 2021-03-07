@@ -1,5 +1,5 @@
 for i from 0 to 5 do
 
-       begin
-            i := i + 1;
-       end
+    begin
+       value := i + 1;
+    end

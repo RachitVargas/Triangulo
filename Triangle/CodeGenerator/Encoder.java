@@ -102,6 +102,9 @@ public final class Encoder implements Visitor {
   public Object visitForCommand(ForCommand ast, Object obj){
     return null;
   }
+  public Object visitPutCommand(PutCommand ast, Object o) {
+    return null;
+  }
 
   // Expressions
   public Object visitArrayExpression(ArrayExpression ast, Object o) {

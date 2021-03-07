@@ -290,6 +290,21 @@ public class Parser {
       }
       break;
 
+      case Token.PUT:
+      {
+        acceptIt();
+        Vname vAST = parseVname();
+        accept(Token.BIGGER);
+        accept(Token.LPAREN);
+        Expression eAST1 = parseExpression();
+        accept(Token.COLON);
+        Expression eAST2 = parseExpression();
+        accept(Token.RPAREN);
+        finish(commandPos);
+        commandAST = new PutCommand(vAST, eAST1,eAST2, commandPos);
+      }
+      break;
+
       case Token.FOR:
       {
         acceptIt();

@@ -95,6 +95,9 @@ public final class Checker implements Visitor {
   public Object visitForCommand(ForCommand ast, Object obj){
     return null;
   }
+  public Object visitPutCommand(PutCommand ast, Object o) {
+    return null;
+  }
 
   // Expressions
 

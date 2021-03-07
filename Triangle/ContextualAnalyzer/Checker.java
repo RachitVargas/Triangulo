@@ -99,6 +99,11 @@ public final class Checker implements Visitor {
     return null;
   }
 
+  public Object visitIdentifierCommand(IdentifierCommand ast, Object o) {
+    return null;
+  }
+
+
   // Expressions
 
   // Returns the TypeDenoter denoting the type of the expression. Does

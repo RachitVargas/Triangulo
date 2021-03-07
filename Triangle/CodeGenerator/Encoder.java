@@ -96,13 +96,20 @@ public final class Encoder implements Visitor {
   public Object visitRepeatCommand(RepeatCommand ast, Object obj){
     return null;
   }
+
   public Object visitRunCommand(RunCommand ast, Object obj){
     return null;
   }
+
   public Object visitForCommand(ForCommand ast, Object obj){
     return null;
   }
+
   public Object visitPutCommand(PutCommand ast, Object o) {
+    return null;
+  }
+
+  public Object visitIdentifierCommand(IdentifierCommand ast, Object o) {
     return null;
   }
 

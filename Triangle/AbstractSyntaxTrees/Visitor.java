@@ -39,6 +39,9 @@ public interface Visitor {
 
   public abstract Object visitPutCommand(PutCommand ast, Object o);
 
+  public abstract Object visitIdentifierCommand(IdentifierCommand ast, Object o);
+
+
   // Expressions
   public abstract Object visitArrayExpression(ArrayExpression ast, Object o);
 

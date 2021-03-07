@@ -69,6 +69,7 @@ public class LayoutVisitor implements Visitor {
   public Object visitForCommand(ForCommand ast, Object o) {return layoutQuaternary("ForCom.", ast.V, ast.I, ast.I_2, ast.V); }
 
   public Object visitPutCommand(PutCommand ast, Object o) { return layoutTernary("PutCom.", ast.V, ast.E1, ast.E2); }
+  public Object visitIdentifierCommand(IdentifierCommand ast, Object o) { return layoutTernary("IdentifierCom.", ast.V, ast.V_2, ast.V_3); }
 
   // Expressions
   public Object visitArrayExpression(ArrayExpression ast, Object obj) {

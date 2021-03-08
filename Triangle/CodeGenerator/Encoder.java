@@ -109,9 +109,6 @@ public final class Encoder implements Visitor {
     return null;
   }
 
-  public Object visitIdentifierCommand(IdentifierCommand ast, Object o) {
-    return null;
-  }
 
   // Expressions
   public Object visitArrayExpression(ArrayExpression ast, Object o) {

@@ -207,6 +207,8 @@ public class Parser {
 
     switch (currentToken.kind) {
 
+
+
     case Token.IDENTIFIER:
       {
         Identifier iAST = parseIdentifier();
@@ -320,18 +322,6 @@ public class Parser {
         commandAST = new ForCommand(vAST,ilAST,ilAST_2,cAST,commandPos);
       }
 
-//      case Token.IDENTIFIERVAR:
-//
-//      {
-//        acceptIt();
-//        Vname vAST = parseVname();
-//        accept(Token.BECOMES);
-//        Vname vAST_2 = parseVname();
-//        accept(Token.NUMERAL);
-//        Vname vAST_3 = parseVname();
-//        finish(commandPos);
-//        commandAST = new IdentifierCommand(vAST,vAST_2,vAST_3,commandPos);
-//      }
 
 
     case Token.SEMICOLON:

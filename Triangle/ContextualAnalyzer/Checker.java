@@ -99,11 +99,6 @@ public final class Checker implements Visitor {
     return null;
   }
 
-  public Object visitIdentifierCommand(IdentifierCommand ast, Object o) {
-    return null;
-  }
-
-
   // Expressions
 
   // Returns the TypeDenoter denoting the type of the expression. Does
@@ -854,10 +849,11 @@ public final class Checker implements Visitor {
     StdEnvironment.notDecl = declareStdUnaryOp("\\", StdEnvironment.booleanType, StdEnvironment.booleanType);
     StdEnvironment.andDecl = declareStdBinaryOp("/\\", StdEnvironment.booleanType, StdEnvironment.booleanType, StdEnvironment.booleanType);
     StdEnvironment.orDecl = declareStdBinaryOp("\\/", StdEnvironment.booleanType, StdEnvironment.booleanType, StdEnvironment.booleanType);
-
+    /*Rachit mae aqui es donde hay que incluir esa vara tambien mi rico !!!*/
     StdEnvironment.integerDecl = declareStdType("Integer", StdEnvironment.integerType);
     StdEnvironment.maxintDecl = declareStdConst("maxint", StdEnvironment.integerType);
     StdEnvironment.addDecl = declareStdBinaryOp("+", StdEnvironment.integerType, StdEnvironment.integerType, StdEnvironment.integerType);
+    StdEnvironment.numDecl = declareStdBinaryOp("#", StdEnvironment.integerType, StdEnvironment.integerType, StdEnvironment.integerType);
     StdEnvironment.subtractDecl = declareStdBinaryOp("-", StdEnvironment.integerType, StdEnvironment.integerType, StdEnvironment.integerType);
     StdEnvironment.multiplyDecl = declareStdBinaryOp("*", StdEnvironment.integerType, StdEnvironment.integerType, StdEnvironment.integerType);
     StdEnvironment.divideDecl = declareStdBinaryOp("/", StdEnvironment.integerType, StdEnvironment.integerType, StdEnvironment.integerType);

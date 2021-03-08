@@ -38,7 +38,7 @@ public final class Scanner {
     return (c == '+' || c == '-' || c == '*' || c == '/' ||
 	    c == '=' || c == '<' || c == '>' || c == '\\' ||
 	    c == '&' || c == '@' || c == '%' || c == '^' ||
-	    c == '?');
+	    c == '?' || c == '#');
   }
 
 
@@ -113,7 +113,7 @@ public final class Scanner {
 
     case '+':  case '-':  case '*': case '/':  case '=':
     case '<':  case '>':  case '\\':  case '&':  case '@':
-    case '%':  case '^':  case '?':
+    case '%':  case '^': case '?': case '#':
       takeIt();
       while (isOperator(currentChar))
         takeIt();

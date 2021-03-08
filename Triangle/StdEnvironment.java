@@ -27,28 +27,28 @@ public final class StdEnvironment {
   // These are small ASTs representing standard types.
 
   public static TypeDenoter
-    booleanType, charType, integerType, anyType, errorType;
+          booleanType, charType, integerType, anyType, errorType;
 
   public static TypeDeclaration
-    booleanDecl, charDecl, integerDecl;
+          booleanDecl, charDecl, integerDecl;
 
   // These are small ASTs representing "declarations" of standard entities.
 
   public static ConstDeclaration
-    falseDecl, trueDecl, maxintDecl;
+          falseDecl, trueDecl, maxintDecl;
 
   public static UnaryOperatorDeclaration
-    notDecl;
+          notDecl;
 
   public static BinaryOperatorDeclaration
-    andDecl, orDecl,
-    addDecl, subtractDecl, multiplyDecl, divideDecl, moduloDecl,
-    equalDecl, unequalDecl, lessDecl, notlessDecl, greaterDecl, notgreaterDecl;
+          andDecl, orDecl,
+          addDecl, subtractDecl, multiplyDecl, divideDecl, moduloDecl,
+          equalDecl, unequalDecl, lessDecl, notlessDecl, greaterDecl, notgreaterDecl, numDecl;
 
   public static ProcDeclaration
-    getDecl, putDecl, getintDecl, putintDecl, geteolDecl, puteolDecl;
+          getDecl, putDecl, getintDecl, putintDecl, geteolDecl, puteolDecl;
 
   public static FuncDeclaration
-    chrDecl, ordDecl, eolDecl, eofDecl;
+          chrDecl, ordDecl, eolDecl, eofDecl;
 
 }

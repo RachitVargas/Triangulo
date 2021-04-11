@@ -1,4 +1,6 @@
-for i from 0 to 5 do
+let var i:Integer in
+
+for i from 0 to 6 do
     begin
         value := i + 1;
     end

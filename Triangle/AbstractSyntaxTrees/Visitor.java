@@ -37,7 +37,7 @@ public interface Visitor {
 
   public abstract Object visitForCommand(ForCommand ast, Object o);
 
-  public abstract Object visitPutCommand(PutCommand ast, Object o);
+  public abstract Object visitChooseCommand(ChooseCommand ast, Object o);
 
 
 

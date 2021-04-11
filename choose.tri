@@ -1,0 +1,6 @@
+let
+	var x: Integer
+in
+
+choose x
+bigger (3:4);

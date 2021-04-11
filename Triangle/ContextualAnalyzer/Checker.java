@@ -89,13 +89,46 @@ public final class Checker implements Visitor {
   public Object visitRepeatCommand(RepeatCommand ast, Object obj){
     return null;
   }
+
   public Object visitRunCommand(RunCommand ast, Object obj){
+    TypeDenoter eType = (TypeDenoter) ast.I.visit(this, null);
+    if (! eType.equals(StdEnvironment.integerType))
+      reporter.reportError("Integer expression expected here", "", ast.I.position);
+    ast.C.visit(this, null);
+
     return null;
   }
+
   public Object visitForCommand(ForCommand ast, Object obj){
+
+    TypeDenoter eType = (TypeDenoter) ast.V.visit(this, null);
+    TypeDenoter e1Type = (TypeDenoter) ast.I.visit(this, null);
+    TypeDenoter e2Type = (TypeDenoter) ast.I_2.visit(this, null);
+
+    if (! eType.equals(StdEnvironment.integerType))
+      reporter.reportError("Integer literal expected here", "", ast.V.position);
+    if (! e1Type.equals(StdEnvironment.integerType))
+      reporter.reportError("Integer literal expected here", "", ast.I.position);
+    if (! e2Type.equals(StdEnvironment.integerType))
+      reporter.reportError("Integer literal expected here", "", ast.I_2.position);
+      ast.C.visit(this, null);
+
     return null;
+
   }
-  public Object visitPutCommand(PutCommand ast, Object o) {
+  public Object visitChooseCommand(ChooseCommand ast, Object o) {
+
+    TypeDenoter eType = (TypeDenoter) ast.V.visit(this, null);
+    TypeDenoter e1Type = (TypeDenoter) ast.E1.visit(this, null);
+    TypeDenoter e2Type = (TypeDenoter) ast.E2.visit(this, null);
+
+    if (! eType.equals(StdEnvironment.integerType))
+      reporter.reportError("Integer literal expected here", "", ast.V.position);
+    if (! e1Type.equals(StdEnvironment.integerType))
+      reporter.reportError("Integer literal expected here", "", ast.E1.position);
+    if (! e2Type.equals(StdEnvironment.integerType))
+      reporter.reportError("Integer literal expected here", "", ast.E2.position);
+
     return null;
   }
 

@@ -1,7 +1,0 @@
-run 4 times
-
-        begin
-            result := x * result;
-            putint(result);
-            n := n + 1;
-        end

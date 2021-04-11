@@ -105,7 +105,7 @@ public final class Encoder implements Visitor {
     return null;
   }
 
-  public Object visitPutCommand(PutCommand ast, Object o) {
+  public Object visitChooseCommand(ChooseCommand ast, Object o) {
     return null;
   }
 

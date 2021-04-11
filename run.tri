@@ -1,7 +1,14 @@
-run 1 times
+let
+    var x: Integer;
+    var y: Integer;
+    var result: Integer
+in
+
+run 3 times
+
     begin
-		result := x * result;
-        put(' ');
-        putint(result);
-        n := n + 3;
+         x := 2;
+         y := 4;
+         result := x+y;
+         putint(result);
     end

@@ -52,8 +52,6 @@ public final class Machine {
     JUMPIFop = 14,
     HALTop = 15;
 
-
-
 // CODE STORE
 
   public static Instruction[] code = new Instruction[1024];

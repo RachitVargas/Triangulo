@@ -313,13 +313,13 @@ public class Parser {
         acceptIt();
         Vname vAST = parseVname();
         accept(Token.FROM);
-        IntegerLiteral ilAST = parseIntegerLiteral();
+        Expression e1AST = parseExpression();
         accept(Token.TO);
-        IntegerLiteral ilAST_2 = parseIntegerLiteral();
+        Expression e2AST = parseExpression();
         accept(Token.DO);
         Command cAST = parseSingleCommand();
         finish(commandPos);
-        commandAST = new ForCommand(vAST,ilAST,ilAST_2,cAST,commandPos);
+        commandAST = new ForCommand(vAST, e1AST, e2AST, cAST, commandPos);
       }
 
 

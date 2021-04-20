@@ -16,7 +16,7 @@ package Triangle.CodeGenerator;
 
 public class UnknownValue extends RuntimeEntity {
 
-  public UnknownValue () {
+  public UnknownValue(int i, int i1) {
     super();
     address = null;
   }

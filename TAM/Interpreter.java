@@ -620,7 +620,7 @@ public class Interpreter {
     if (args.length == 1)
       objectName = args[0];
   	else
-      objectName = "obj.tam";
+      objectName = "/Users/antony.vargasulead.ac.cr/IdeaProjects/Archivos/run.tam";
 
     loadObjectProgram(objectName);
     if (CT != CB) {

@@ -80,6 +80,7 @@ public final class Encoder implements Visitor {
   }
 
   public Object visitWhileCommand(WhileCommand ast, Object o) {
+
     Frame frame = (Frame) o;
     int jumpAddr, loopAddr;
 
@@ -87,10 +88,12 @@ public final class Encoder implements Visitor {
     emit(Machine.JUMPop, 0, Machine.CBr, 0);
     loopAddr = nextInstrAddr;
     ast.C.visit(this, frame);
-    patch(jumpAddr, nextInstrAddr);
+    patch(jumpAddr, nextInstrAddr); // Escribe el codigo en el TAM
     ast.E.visit(this, frame);
     emit(Machine.JUMPIFop, Machine.trueRep, Machine.CBr, loopAddr);
+
     return null;
+
   }
 
   public Object visitRepeatCommand(RepeatCommand ast, Object obj){
@@ -98,6 +101,20 @@ public final class Encoder implements Visitor {
   }
 
   public Object visitRunCommand(RunCommand ast, Object obj){
+
+    Frame frame = (Frame) obj;
+    int jumpAddr, loopAddr;
+
+    jumpAddr = nextInstrAddr;
+    emit(Machine.JUMPop, 0, Machine.CBr, 0);
+    loopAddr = nextInstrAddr;
+    emit(Machine.LOADLop, 0, 0, Integer.parseInt(ast.I.spelling));
+    //emit(Machine.LOADLop,0,0,value);
+    patch(jumpAddr, nextInstrAddr);
+    ast.C.visit(this, frame);
+
+    emit(Machine.CALLIop,Machine.LBr,Machine.PBr,Machine.predDisplacement);
+    emit(Machine.JUMPIFop, Machine.trueRep, Machine.CBr, loopAddr);
     return null;
   }
 

@@ -113,7 +113,6 @@ public final class Encoder implements Visitor {
     }
 
      */
-
     return null;
 
   }

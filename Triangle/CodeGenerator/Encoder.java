@@ -106,12 +106,13 @@ public final class Encoder implements Visitor {
 
   public Object visitRunCommand(RunCommand ast, Object obj){
 
-    int valor = Integer.parseInt(ast.I.spelling);
+    /* int valor = Integer.parseInt(ast.I.spelling);
     while (valor > 0){
       ast.C.visit(this, obj);
       valor--;
     }
 
+     */
 
     return null;
 

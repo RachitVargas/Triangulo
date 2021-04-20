@@ -27,7 +27,6 @@ public class WhileCommand extends Command {
   public Object visit(Visitor v, Object o) {
     return v.visitWhileCommand(this, o);
   }
-
   public Expression E;
   public Command C;
 }

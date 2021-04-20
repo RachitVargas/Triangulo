@@ -101,21 +101,22 @@ public final class Checker implements Visitor {
 
   public Object visitForCommand(ForCommand ast, Object obj){
 
-    TypeDenoter eType = (TypeDenoter) ast.V.visit(this, null);
+    TypeDenoter vType = (TypeDenoter) ast.V.visit(this, null);
+    if (! ast.V.variable)
+      reporter.reportError("identifier is not a variable", "", ast.V.position);
+    else if (! (vType instanceof IntTypeDenoter))
+      reporter.reportError("Integer expected here", "", ast.V.position);
     TypeDenoter e1Type = (TypeDenoter) ast.I.visit(this, null);
+    if (! e1Type.equals(vType))
+      reporter.reportError("wrong type for starting expression", "", ast.I.position);
     TypeDenoter e2Type = (TypeDenoter) ast.I_2.visit(this, null);
-
-    if (! eType.equals(StdEnvironment.integerType))
-      reporter.reportError("Integer literal expected here", "", ast.V.position);
-    if (! e1Type.equals(StdEnvironment.integerType))
-      reporter.reportError("Integer literal expected here", "", ast.I.position);
-    if (! e2Type.equals(StdEnvironment.integerType))
-      reporter.reportError("Integer literal expected here", "", ast.I_2.position);
-      ast.C.visit(this, null);
-
+    if (! e2Type.equals(vType))
+      reporter.reportError("wrong type for ending expression", "", ast.I_2.position);
+    ast.C.visit(this, null);
     return null;
 
   }
+
   public Object visitChooseCommand(ChooseCommand ast, Object o) {
 
     TypeDenoter eType = (TypeDenoter) ast.V.visit(this, null);

@@ -97,29 +97,48 @@ public final class Encoder implements Visitor {
   }
 
   public Object visitRepeatCommand(RepeatCommand ast, Object obj){
+    short g = (short) nextInstrAddr;
+    ast.C.visit(this, obj);
+    ast.E.visit(this, obj);
+    emit(Machine.JUMPIFop, 0, Machine.CBr,g);
     return null;
   }
 
   public Object visitRunCommand(RunCommand ast, Object obj){
 
-    Frame frame = (Frame) obj;
-    int jumpAddr, loopAddr;
+    /* int valor = Integer.parseInt(ast.I.spelling);
+    while (valor > 0){
+      ast.C.visit(this, obj);
+      valor--;
+    }
 
-    jumpAddr = nextInstrAddr;
-    emit(Machine.JUMPop, 0, Machine.CBr, 0);
-    loopAddr = nextInstrAddr;
-    emit(Machine.LOADLop, 0, 0, Integer.parseInt(ast.I.spelling));
-    //emit(Machine.LOADLop,0,0,value);
-    patch(jumpAddr, nextInstrAddr);
-    ast.C.visit(this, frame);
-
-    emit(Machine.CALLIop,Machine.LBr,Machine.PBr,Machine.predDisplacement);
-    emit(Machine.JUMPIFop, Machine.trueRep, Machine.CBr, loopAddr);
+     */
     return null;
+
   }
 
   public Object visitForCommand(ForCommand ast, Object obj){
+
+    Frame frame = (Frame) obj;
+    int jumpAddr, loopAddr;
+
+    ast.I.visit(this, frame);
+    encodeStore(ast.V, new Frame (frame, 1), 1);
+    jumpAddr = nextInstrAddr;
+    emit(Machine.JUMPop, 0, Machine.CBr, 0);
+    loopAddr = nextInstrAddr;
+    ast.C.visit(this, frame);
+    encodeFetch(ast.V, frame, 1);
+    emit(Machine.CALLop, Machine.SBr, Machine.PBr, Machine.succDisplacement);
+    encodeStore(ast.V, new Frame (frame, 1), 1);
+    patch(jumpAddr, nextInstrAddr);
+    encodeFetch(ast.V, frame, 1);
+    ast.I_2.visit(this, frame);
+    emit(Machine.CALLop, Machine.SBr, Machine.PBr, Machine.leDisplacement);
+    emit(Machine.JUMPIFop, Machine.trueRep, Machine.CBr, loopAddr);
+
     return null;
+
   }
 
   public Object visitChooseCommand(ChooseCommand ast, Object o) {
